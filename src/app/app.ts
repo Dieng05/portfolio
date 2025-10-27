@@ -1,12 +1,15 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Navigation } from './components/navigation/navigation';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
+  standalone: true,
+  imports: [RouterOutlet, Navigation, CommonModule]
 })
 export class App {
-  protected readonly title = signal('portfolio');
+  title = 'Ahmadou DIENG - Portfolio';
 }
