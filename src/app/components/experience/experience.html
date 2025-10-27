@@ -1,0 +1,59 @@
+<div class="w-full flex flex-column align-items-center justify-content-center p-6">
+
+    <!-- Titre Principal -->
+    <div class="w-full flex flex-column align-items-center justify-content-center mb-8">
+      <h1 class="text-4xl font-bold text-gray-900 flex align-items-center justify-content-center gap-3 m-0 mb-4">
+        <i class="fa-solid fa-briefcase text-blue-500 text-4xl"></i>
+        Expériences Professionnelles
+      </h1>
+      <div class="bg-gradient-blue-green h-1 w-20"></div>
+    </div>
+
+    <!-- Liste des Expériences -->
+    <div class="w-full flex flex-column gap-6">
+      <div *ngFor="let exp of experiences; let i = index"
+           class="w-full flex gap-4 bg-white border-1 border-gray-200 border-round-lg p-6 hover:shadow-3 transition-all-300">
+
+        <!-- Timeline Indicator -->
+        <div class="flex flex-column align-items-center justify-content-start min-w-max">
+          <div [ngClass]="i === 0 ? 'w-5 h-5 bg-blue-500 border-4 border-white shadow-lg rounded-full' : 'w-4 h-4 bg-gray-300 border-3 border-white rounded-full'"></div>
+          <div *ngIf="i !== experiences.length - 1"
+               class="w-1 h-16 bg-gradient-blue-green my-2"></div>
+        </div>
+
+        <!-- Contenu de l'Experience -->
+        <div class="flex-1 flex flex-column gap-3">
+
+          <!-- Titre -->
+          <div class="flex flex-column">
+            <h2 class="text-2xl font-bold text-gray-900 m-0 mb-2">{{ exp.title }}</h2>
+
+            <!-- Badges -->
+            <div class="flex flex-wrap gap-2 mb-2">
+              <span class="flex align-items-center gap-2 text-sm text-gray-700 bg-gray-100 px-3 py-2 border-round-full">
+                <i class="fa-solid fa-building text-blue-500"></i>
+                {{ exp.company }}
+              </span>
+              <span class="flex align-items-center gap-2 text-sm text-gray-700 bg-gray-100 px-3 py-2 border-round-full">
+                <i class="fa-solid fa-map-marker-alt text-red-500"></i>
+                {{ exp.location }}
+              </span>
+              <span class="flex align-items-center gap-2 text-sm text-gray-700 bg-gray-100 px-3 py-2 border-round-full">
+                <i class="fa-solid fa-calendar text-green-500"></i>
+                {{ exp.period }}
+              </span>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="flex flex-column gap-2">
+            <div *ngFor="let desc of exp.description"
+                 class="flex gap-3 align-items-start">
+              <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+              <p class="m-0 text-gray-700 text-base line-height-2">{{ desc }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
