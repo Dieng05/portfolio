@@ -1,0 +1,116 @@
+<div class="w-full" *ngIf="projet">
+
+  <div class="flex align-content-cnter align-items-center justify-content-center w-full mb-4">
+    <h1 class="text-4xl font-bold text-gray-900 flex items-center gap-3 text-center">
+      {{ projet.titre }}
+    </h1>
+  </div>
+
+  <div class="flex flex-wrap gap-3">
+    <div class="xl:w-3 lg:w-12 md:w-12 sm:w-12 mt-2 p-4 border-1 border-gray-300 border-round bg-white-alpha-40 h-31rem">
+      <div class="mb-4">
+        <h3 class="text-xl font-bold text-gray-900 mb-3 flex align-items-center gap-2">
+          <i class="pi pi-server text-primary"></i>
+          Technologies Backend
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          <p-chip
+            *ngFor="let tech of projet.technologiesBackend"
+            [label]="tech"
+            styleClass="bg-primary-100 text-primary-700"
+          ></p-chip>
+        </div>
+      </div>
+
+      <p-divider></p-divider>
+
+      <div class="mb-4">
+        <h3 class="text-xl font-bold text-gray-900 mb-3 flex align-items-center gap-2">
+          <i class="pi pi-desktop text-primary"></i>
+          Technologies Frontend
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          <p-chip
+            *ngFor="let tech of projet.technologiesFrontend"
+            [label]="tech"
+            styleClass="bg-green-100 text-green-700"
+          ></p-chip>
+        </div>
+      </div>
+
+      <p-divider></p-divider>
+
+      <div class="mt-4">
+        <p-button
+          label="Voir sur GitHub"
+          icon="pi pi-github"
+          (onClick)="ouvrirGithub()"
+          styleClass="w-full"
+          [outlined]="true"
+        ></p-button>
+      </div>
+    </div>
+
+
+    <div class="flex-1 md:w-12 mt-2 p-4 border-1 border-gray-300 border-round bg-white-alpha-40">
+      <div class="mb-4">
+        <p class="text-lg text-gray-700 line-height-3 mt-3">
+          {{ projet.introduction }}
+        </p>
+      </div>
+
+      <p-divider></p-divider>
+
+      <div class="mt-5">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+          Captures d'écran
+        </h2>
+
+        <div class="flex flex-column gap-5 bg-white-alpha-60">
+          <div *ngFor="let image of projet.images" class="w-full">
+            <p-card>
+              <ng-template pTemplate="header">
+                <div class="px-4 pt-4">
+                  <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                    {{ image.titre }}
+                  </h3>
+                </div>
+                <div class="card flex justify-content-center align-items-center p-3">
+                  <p-image
+                    [src]="image.url"
+                    [alt]="image.titre"
+                    width="100%"
+                    [preview]="true"
+                    class="border-round"
+                    [style]="{'max-height': '400px', 'object-fit': 'cover'}" />
+                </div>
+              </ng-template>
+
+              <ng-template pTemplate="content">
+                <p class="text-gray-700 line-height-3" *ngIf="image.description">
+                  {{ image.description }}
+                </p>
+              </ng-template>
+            </p-card>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!projet.images || projet.images.length === 0" class="text-center py-5">
+        <i class="pi pi-image text-6xl text-gray-400 mb-3"></i>
+        <p class="text-gray-500">Aucune capture d'écran disponible pour ce projet.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!projet" class="text-center py-8">
+  <i class="pi pi-exclamation-circle text-6xl text-red-500 mb-3"></i>
+  <h2 class="text-2xl font-bold text-gray-900 mb-3">Projet introuvable</h2>
+  <p class="text-gray-600 mb-4">Le projet demandé n'existe pas.</p>
+  <p-button
+    label="Retour aux projets"
+    icon="pi pi-arrow-left"
+    (onClick)="retourAuxProjets()">
+  </p-button>
+</div>

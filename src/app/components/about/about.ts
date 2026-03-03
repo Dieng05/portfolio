@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Card, CardModule} from 'primeng/card';
+import {Experience} from '../experience/experience';
 
 @Component({
   selector: 'app-about',

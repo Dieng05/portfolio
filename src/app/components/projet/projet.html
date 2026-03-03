@@ -1,1 +1,30 @@
-<p>projet works!</p>
+<div class="w-full flex flex-column align-items-center justify-content-center mt-4 mb-0">
+  <h1 class="w-full text-4xl font-bold text-gray-900 flex align-items-center justify-content-center gap-3 m-0 mb-4">
+    Mes Projets Personnels
+  </h1>
+</div>
+
+<div class="flex-row w-full h-full bg-transparent py-0 mb-3">
+  <div class="grid flex w-full align-content-center justify-content-center">
+    <div class="grid col-12 flex justify-content-center flex-wrap">
+      <div class="col-12 md:col-4 mb-4" *ngFor="let projet of projets">
+        <a [class.cursor-not-allowed]="!(projet.idProjet === 1 || projet.idProjet === 2 || projet.idProjet === 3 || projet.idProjet === 4|| projet.idProjet === 5)"
+           (click)="(projet.idProjet === 1 || projet.idProjet === 2 || projet.idProjet === 3  || projet.idProjet === 4 || projet.idProjet === 5) && redirectToDetails(projet.idProjet)"
+           class="text-color-secondary no-underline">
+          <div class="box-im-text bordure-ronde-xl shadow-4 cursor-pointer hover:shadow-6 transition-duration-300"
+               [class.opacity-60]="!(projet.idProjet === 1 || projet.idProjet === 2 || projet.idProjet === 3 || projet.idProjet === 4 || projet.idProjet === 5)">
+            <img [src]="projet.imageAccueil" [alt]="projet.titre"
+                 class="box-image bordure-arrondie-haut w-full img-thumbnail mb-3"
+                 style="width: 100%; height: 65%; object-fit: cover;"/>
+
+            <div class="icon-container flex flex-column align-items-center justify-content-center gap-2"
+                 style="color: black; text-align: center;">
+              <span class="icone_title font-semibold">{{ projet.titre }}</span>
+              <p class="m-0 text-sm text-gray-600">{{ projet.description }}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -63,7 +63,6 @@ export class Experience implements OnInit {
   constructor(private scrollService: ScrollService) {}
 
   ngOnInit() {
-    // Scroll automatique vers le top en arrivant sur cette page
     this.scrollService.scrollToTop();
   }
 }

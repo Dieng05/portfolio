@@ -1,15 +1,12 @@
 <div class="flex flex-column min-h-screen bg-gradient-purple-500">
-  <!-- Navigation Bar -->
-  <div class="navbar-wrapper w-full">
+
+  <div class="navbar-wrapper w-full position-fixed top-0 z-5">
     <app-navigation></app-navigation>
   </div>
-
-  <!-- Main Content with Routing -->
-  <div class="flex-1 flex align-items-center justify-content-center w-full">
+  <div class="flex-1 w-full" style="padding-top: 3%;">
     <router-outlet></router-outlet>
   </div>
 
-  <!-- Footer -->
   <footer class="w-full bg-gray-900 text-white text-center p-4 mt-auto border-1 border-gray-300 border-round">
     <p class="m-0 text-sm">&copy; 2025 Ahmadou DIENG. Tous droits réservés.</p>
   </footer>

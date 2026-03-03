@@ -1,47 +1,20 @@
 import { Routes } from '@angular/router';
-import { Navigation } from './components/navigation/navigation';
-import { About } from './components/about/about';
-import { Experience } from './components/experience/experience';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'accueil',
-    pathMatch: 'full'
+    loadComponent: () =>
+      import('./pages/home/home')
+        .then(m => m.Home)
   },
   {
-    path: 'accueil',
-    component: About,
-    data: { title: 'Accueil' }
+    path: 'projets-details/:idProjet',
+    loadComponent: () =>
+      import('./components/projet-details/projet-details')
+        .then(m => m.ProjetDetails)
   },
   {
-    path: 'a-propos',
-    component: About,
-    data: { title: 'À-propos' }
-  },
-  {
-    path: 'experiences',
-    component: Experience,
-    data: { title: 'Experiences' }
-  },
-  {
-    path: 'projets',
-    component: About,
-    data: { title: 'Projets' }
-  },
-  {
-    path: 'formations',
-    component: About,
-    data: { title: 'Formations' }
-  },
-  {
-    path: 'competences',
-    component: About,
-    data: { title: 'Competences' }
-  },
-  {
-    path: 'contact',
-    component: About,
-    data: { title: 'Contact' }
+    path: '**',
+    redirectTo: ''
   }
 ];

@@ -13,6 +13,7 @@ export class ProjetModel {
   technologiesBackend: string[];
   technologiesFrontend: string[];
   images: ImageProjet[];
+  description: string;
   lienGithub: string;
 
   constructor(
@@ -24,6 +25,7 @@ export class ProjetModel {
     technologiesBackend: string[] = [],
     technologiesFrontend: string[] = [],
     images: ImageProjet[] = [],
+    description: string = '',
     lienGithub: string = ''
   ) {
     this.idProjet = idProjet;
@@ -34,6 +36,7 @@ export class ProjetModel {
     this.technologiesBackend = technologiesBackend;
     this.technologiesFrontend = technologiesFrontend;
     this.images = images;
+    this.description = description;
     this.lienGithub = lienGithub;
   }
 }

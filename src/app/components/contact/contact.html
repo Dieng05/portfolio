@@ -1,1 +1,66 @@
-<p>contact works!</p>
+<div class="w-full flex flex-column align-items-center justify-content-center mt-6 mb-5 px-3">
+  <h1 class="text-5xl font-bold text-900 flex align-items-center justify-content-center gap-3 m-0 mb-2">
+    Contact & Compétences
+  </h1>
+  <p class="text-xl text-600 text-center m-0">
+    Développeur Full Stack | Passionné par l'IA et les nouvelles technologies
+  </p>
+</div>
+
+<div class="w-full max-w-7xl mx-auto px-3 py-4">
+
+  <div class="mb-6">
+    <div class="grid">
+      <div class="col-12 lg:col-6" *ngFor="let comp of competences">
+        <p-card class="h-full">
+          <ng-template pTemplate="header">
+            <div class="flex align-items-center gap-3 p-3 bg-primary-50">
+              <i [class]="comp.icon" class="text-2xl" [style.color]="comp.color"></i>
+              <h3 class="text-xl font-bold text-900 m-0">{{ comp.categorie }}</h3>
+            </div>
+          </ng-template>
+
+          <div class="flex flex-wrap gap-2">
+            <p-chip
+              *ngFor="let skill of comp.skills"
+              [label]="skill"
+              [style.background]="comp.color + '15'"
+              [style.color]="comp.color"
+              styleClass="font-semibold"
+              class="transition-all transition-duration-200 hover:shadow-3 cursor-pointer">
+            </p-chip>
+          </div>
+        </p-card>
+      </div>
+    </div>
+  </div>
+
+  <p-divider></p-divider>
+
+  <div class="grid mt-6">
+    <div class="col-12 md:col-4">
+      <p-card class="text-center bg-blue-50 h-full border-none">
+        <i class="pi pi-code text-5xl text-blue-500 mb-3"></i>
+        <h3 class="text-3xl font-bold text-blue-900 m-0 mb-2">2</h3>
+        <p class="text-900 m-0">Langages maîtrisés</p>
+        <p class="text-500 m-0">Français & Anglais</p>
+      </p-card>
+    </div>
+    <div class="col-12 md:col-4">
+      <p-card class="text-center bg-green-50 h-full border-none">
+        <i class="pi pi-check-circle text-5xl text-green-900 mb-3"></i>
+        <h3 class="text-3xl font-bold text-green-600 m-0 mb-2">10+</h3>
+        <p class="text-900 m-0">Projets réalisés</p>
+      </p-card>
+    </div>
+    <div class="col-12 md:col-4">
+      <p-card class="text-center bg-purple-50 h-full border-none">
+        <i class="pi pi-star text-5xl text-purple-500 mb-3"></i>
+        <h3 class="text-3xl font-bold text-purple-700 m-0 mb-2">100%</h3>
+        <p class="text-900 m-0">Engagement</p>
+      </p-card>
+    </div>
+  </div>
+
+</div>
+

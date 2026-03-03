@@ -1,0 +1,11 @@
+// Solution pour tablette
+@media (min-width: 768px) and (max-width: 1199px) {
+  .profile-image-section {
+    justify-content: flex-start !important;
+    align-items: center !important;
+
+    img, .developer-badge {
+      align-self: center !important;
+    }
+  }
+}

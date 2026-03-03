@@ -1,31 +1,36 @@
-<div class="flex mt-2 p-4 w-full border-1 border-gray-300 border-round bg-white-alpha-40 gap-4">
+<div class="flex flex-wrap mt-2 p-4 w-full border-1 border-gray-300 border-round bg-white-alpha-40 xl:gap-4 gap-3 align-items-start">
 
-  <div class="w-4 flex flex-column align-items-center justify-content-center gap-3">
+  <!-- Section Image et Titre - Ordre: XS=1, MD=2, XL=1 -->
+  <div class="w-12 xl:w-4 flex flex-column align-items-center justify-content-start gap-3 order-1 md:order-2 xl:order-1">
     <img src="Ahmadou.jpg" alt="Ahmadou DIENG" class="border-circle w-10rem h-10rem" />
     <div class="flex align-items-center gap-2">
-      <i class="fa-solid fa-circle text-black-500 text-xs"></i>
+      <i class="pi pi-circle-fill text-green-500 text-xs"></i>
       <span class="text-gray-600">Développeur Full Stack</span>
     </div>
   </div>
 
-  <div class="w-8 flex flex-column">
-    <span class="bg-green-100 text-green-700 px-3 py-1 border-round text-sm font-semibold mb-2 align-self-end">
+  <!-- Section Contenu - Ordre: XS=2, MD=1, XL=2 -->
+  <div class="w-12 xl:flex-1 flex flex-column order-2 md:order-1 xl:order-2">
+    <span class="bg-green-100 text-green-700 px-3 py-1 border-round text-sm font-semibold mb-2 xl:align-self-end align-self-center">
       À la recherche d'un stage.
     </span>
-
-    <div class="flex flex-column align-items-end">
-      <h1 class="text-xl font-bold m-0 mb-1 text-right">Ahmadou DIENG</h1>
-      <p class="text-gray-600 mb-4 line-height-3 text-right">
-        Diplômé d'un Master 2 MIAGE au Sénégal et actuellement en Master 1 MIAGE à l'Université
+    <div class="flex flex-column xl:align-items-end align-items-center">
+      <h1 class="text-xl font-bold m-0 mb-1 xl:text-right text-center">Ahmadou DIENG</h1>
+      <p class="text-gray-600 mb-4 line-height-3 xl:text-right text-center">
+        Diplômé d'un Master MIAGE au Sénégal et actuellement en Master 1 MIAGE à l'Université
         Grenoble Alpes en France, je suis développeur Full Stack passionné par les nouvelles technologies.
-        Fort d'une expérience en développement web et mobile chez Finappli SAS et Westafcom, je suis à la recherche
-        d'un stage et d'une alternance en Master 2 pour 2026-2027.
+        Fort d'une expérience en développement web et mobile chez
+        <a href="https://finappli.com/" target="_blank" class="text-blue-600 underline">Finappli SAS</a>
+        et
+        <a href="https://www.westafcom.com" target="_blank" class="text-blue-600 underline">WestaFCom</a>,
+        je suis à la recherche d'un stage et d'une alternance en Master 2 pour 2026-2027.
       </p>
 
-      <div class="flex gap-2 mb-3">
+
+      <div class="flex flex-wrap gap-2 mb-3 xl:justify-content-end justify-content-center w-full">
         <a href="mailto:ahmadou.dieng@etu.univ-grenoble-alpes.fr"
            class="bg-gray-900 text-white px-4 py-2 border-round flex align-items-center gap-2 border-none cursor-pointer no-underline">
-          <i class="fa-solid fa-envelope"></i>
+          <i class="pi pi-envelope"></i>
           Me contacter
         </a>
         <a href="http://www.linkedin.com/in/ahmadou-dieng-b8a481339"
@@ -34,14 +39,19 @@
           <i class="fa-brands fa-linkedin"></i>
           LinkedIn
         </a>
+        <a href="CV_Ahmadou_DIENG.pdf"
+           download="CV_Ahmadou_DIENG.pdf"
+           class="bg-blue-700 text-white px-4 py-2 border-round flex align-items-center gap-2 border-none cursor-pointer no-underline hover:bg-blue-900">
+          <i class="pi pi-download"></i>
+          Télécharger CV
+        </a>
       </div>
 
-      <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600">
-        <span><i class="fa-solid fa-envelope mr-2"></i> ahmadou.dieng@etu.univ-grenoble-alpes.fr &nbsp;</span>
-        <span><i class="fa-solid fa-phone mr-2"></i> +33 07 59 84 84 00</span>
-        <span><i class="fa-solid fa-location-dot mr-2"></i> France</span>
+      <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600 xl:justify-content-end justify-content-center">
+        <span><i class="pi pi-envelope mr-2"></i> ahmadou.dieng&#64;etu.univ-grenoble-alpes.fr</span>
+        <span><i class="pi pi-phone mr-2"></i> +33 07 59 84 84 00</span>
+        <span><i class="pi pi-map-marker mr-2"></i> France</span>
       </div>
     </div>
   </div>
-
 </div>

@@ -1,77 +1,75 @@
-import { Component } from '@angular/core';
-import { Menubar } from 'primeng/menubar';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Router, NavigationEnd } from '@angular/router';
+import { ScrollService } from '../../services/scroll.service';
+import { filter } from 'rxjs/operators';
 import { MenuItem } from 'primeng/api';
-import { Router } from '@angular/router';
+import { Menubar } from 'primeng/menubar';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.html',
   styleUrl: './navigation.scss',
   standalone: true,
-  imports: [Menubar]
+  imports: [CommonModule, Menubar]
 })
-export class Navigation {
-  items: MenuItem[] | undefined;
+export class Navigation implements OnInit {
+  items: MenuItem[] = [];
+  private pendingScroll: string | null = null;
 
-  constructor(private router: Router) {}
+  constructor(
+    private scrollService: ScrollService,
+    private router: Router
+  ) {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        if (this.pendingScroll) {
+          setTimeout(() => {
+            this.scrollService.scrollToSection(this.pendingScroll!);
+            this.pendingScroll = null;
+          }, 100);
+        }
+      });
+  }
 
   ngOnInit() {
     this.items = [
       {
         label: 'Accueil',
         icon: 'pi pi-home',
-        command: () => this.navigateTo('accueil')
-      },
-      {
-        label: 'À-propos',
-        icon: 'pi pi-star',
-        command: () => this.navigateTo('a-propos')
+        command: () => this.scrollTo('accueil')
       },
       {
         label: 'Experiences',
         icon: 'pi pi-briefcase',
-        command: () => this.navigateTo('experiences')
+        command: () => this.scrollTo('experiences')
       },
       {
         label: 'Projets',
         icon: 'pi pi-folder',
-        command: () => this.navigateTo('projets')
+        command: () => this.scrollTo('projets')
       },
       {
         label: 'Formations',
-        icon: 'pi pi-book',
-        command: () => this.navigateTo('formations')
+        icon: 'pi pi-graduation-cap',
+        command: () => this.scrollTo('formations')
       },
       {
         label: 'Competences',
-        icon: 'pi pi-search',
-        items: [
-          {
-            label: 'Frontend',
-            icon: 'pi pi-bolt',
-            command: () => this.navigateTo('competences')
-          },
-          {
-            label: 'Backend',
-            icon: 'pi pi-server',
-            command: () => this.navigateTo('competences')
-          },
-          {
-            label: 'Mobile',
-            icon: 'pi pi-mobile',
-            command: () => this.navigateTo('competences')
-          }
-        ]
-      },
-      {
-        label: 'Contact',
-        icon: 'pi pi-envelope',
-        command: () => this.navigateTo('contact')
+        icon: 'pi pi-star',
+        command: () => this.scrollTo('contact')
       }
-    ]
+    ];
   }
 
-  navigateTo(route: string) {
-    this.router.navigate([`/${route}`]);
+  scrollTo(sectionId: string): void {
+    this.pendingScroll = sectionId;
+    if (this.router.url === '/' || this.router.url.startsWith('/#')) {
+      this.scrollService.scrollToSection(sectionId);
+      this.pendingScroll = null;
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 }

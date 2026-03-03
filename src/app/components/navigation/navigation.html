@@ -1,7 +1,10 @@
-<div class="flex w-full align-items-center justify-content-center bg-white border-1 border-gray-300 border-round">
-  <div class="w-full card">
-    <div class="w-full flex align-items-center justify-content-center">
-      <p-menubar [model]="items"/>
-    </div>
-  </div>
+<div class="w-full">
+  <p-menubar [model]="items">
+    <ng-template pTemplate="start">
+      <div class="flex align-items-center gap-2">
+        <i class="fa-solid fa-code text-blue-500 text-2xl"></i>
+        <span class="text-xl font-bold text-gray-900">Portfolio</span>
+      </div>
+    </ng-template>
+  </p-menubar>
 </div>
